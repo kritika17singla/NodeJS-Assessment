@@ -1,9 +1,0 @@
-----------------------------314248655026189454956178
-Content-Disposition: form-data; name="file"; filename="New Text Document.txt"
-Content-Type: text/plain
-
-lsof -i tcp:port
-kill -9 processid
-
-screen -t screenName
-----------------------------314248655026189454956178--
