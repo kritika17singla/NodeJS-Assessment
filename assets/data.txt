@@ -1,0 +1,4 @@
+lsof -i tcp:port
+kill -9 processid
+
+screen -t screenName

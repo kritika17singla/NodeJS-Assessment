@@ -6,20 +6,24 @@ var app=express();
 var fs=require('fs');
 var port=3001;
 
+
+
+
 app.get('/',(req,res)=>{
   var data = JSON.parse(fs.readFileSync('./data.json', 'utf8'));
   res.status(200).send(data);
 })
 
-app.get('/product',(req,res)=>{
-  var data=req.query;
+app.get('/product/:x&:y',(req,res)=>{
+  var data=req.params;
   var product=data.x*data.y;
   console.log(product);
-  res.status(200).send({result:product});
+  res.status(200).send("Product is "+product);
 })
 
-app.get('/nonrepeating',(req,res)=>{
-var data=req.query;
+app.get('/nonrepeating/:s',(req,res)=>{
+var data=req.params;
+console.log(data);
 var string=data.s;
   for (var i = 0; i < string.length; i++) {
     var c = string.charAt(i);
@@ -33,10 +37,8 @@ var string=data.s;
 
 
 app.post('/fileUpload',(req,res)=>{
-  console.log(req);
    req.on('data', (data) => {
      fs.writeFile('newFile.txt', data, (err) => {
-     // throws an error, you could also catch it here
      if (err) throw err;
  });
    });
